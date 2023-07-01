@@ -1,0 +1,2 @@
+# Ignore CodeMirror test docs
+test-support/data/docs/**/*.md

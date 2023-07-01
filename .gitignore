@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+
+coverage/
+dist/
+node_modules/
+publish/
+styles/
+
+.DS_STORE

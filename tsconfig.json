@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "module": "commonjs",
+    "target": "es2015",
+    "jsx": "react",
+    "allowJs": true,
+    "baseUrl": ".",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@ts-belt": ["src/ext/ts-belt/alias"],
+      "@ext/*": ["src/ext/*"],
+      "@cm-extension/*": ["src/cm-extension/*"],
+      "@cm-extension-ipc/*": ["src/cm-extension-ipc/*"],
+      "@content-script/*": ["src/content-script/*"],
+      "@joplin-plugin/*": ["src/joplin-plugin/*"],
+      "@joplin-plugin-ipc/*": ["src/joplin-plugin-ipc/*"],
+    },
+    "typeRoots": ["./node_modules/@types", "./types"],
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "joplin-plugin-better-code-blocks",
+  "version": "1.0.0",
+  "scripts": {
+    "coverage": "vitest --coverage",
+    "dist": "webpack --env joplin-plugin-config=buildMain && webpack --env joplin-plugin-config=buildExtraScripts && webpack --env joplin-plugin-config=createArchive",
+    "lint": "eslint src test test-integration test-support",
+    "lint:fix": "eslint --fix src test test-integration test-support",
+    "prepare": "npm run dist",
+    "stylelint": "stylelint src/**/*.css",
+    "test": "vitest",
+    "test:integ": "vitest --mode integration-test",
+    "test:unit": "vitest --mode unit-test",
+    "ui": "vitest --ui --coverage",
+    "vale": "vale src test test-integration test-support --glob '**/*.{css,md,ts}'",
+    "update": "npm install -g generator-joplin && yo joplin --node-package-manager npm --update",
+    "updateVersion": "webpack --env joplin-plugin-config=updateVersion"
+  },
+  "license": "MIT",
+  "keywords": [
+    "joplin-plugin"
+  ],
+  "files": [
+    "publish"
+  ],
+  "devDependencies": {
+    "@joplin/lib": "~2.9",
+    "@mobily/ts-belt": "^3.13.1",
+    "@types/codemirror": "^5.60.8",
+    "@types/node": "^18.7.13",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "@vitest/coverage-v8": "^0.34.1",
+    "@vitest/ui": "^0.34.1",
+    "chalk": "^4.1.0",
+    "codemirror": "^5.65.9",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "eslint-plugin-unicorn": "^48.0.1",
+    "eslint-webpack-plugin": "^4.0.1",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.3",
+    "happy-dom": "^11.0.2",
+    "jest-extended": "^4.0.1",
+    "strong-mock": "^8.0.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-recess-order": "^4.3.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-webpack-plugin": "^4.1.1",
+    "tar": "^6.1.11",
+    "ts-loader": "^9.3.1",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "type-fest": "^4.3.1",
+    "typescript": "^5.2.2",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.34.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
