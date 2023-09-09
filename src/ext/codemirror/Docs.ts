@@ -4,8 +4,6 @@ import { Positions } from "@ext/codemirror/Positions"
 import { Range } from "@ext/codemirror/Range"
 import { Require } from "@ext/stdlib/Require"
 
-import { Origin } from "@cm-extension/model/Origin"
-
 /**
  * Extensions for {@link Doc}s.
  */
@@ -177,7 +175,7 @@ export namespace Docs {
    * Clamps the {@link doc} cursor to be within the given {@link range}.
    * The operation executes using the given {@link origin}.
    */
-  export function clampCursorToRange(doc: Doc, range: Range, origin: Origin): void {
+  export function clampCursorToRange(doc: Doc, range: Range, origin: string): void {
     const cursor = doc.getCursor()
     if (Positions.areStrictlyOrdered({ before: cursor, after: range.from })) {
       doc.setCursor(range.from, undefined, { origin })

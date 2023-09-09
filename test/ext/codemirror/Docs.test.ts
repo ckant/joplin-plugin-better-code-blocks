@@ -6,8 +6,6 @@ import { describe, expect, it } from "vitest"
 import { Docs } from "@ext/codemirror/Docs"
 import { Range } from "@ext/codemirror/Range"
 
-import { Origin } from "@cm-extension/model/Origin"
-
 import { InlineDoc } from "test-support/ext/codemirror/InlineDoc"
 
 describe("Docs", () => {
@@ -239,13 +237,13 @@ describe("Docs", () => {
       const mockDoc = mock<Doc>()
       when(() => mockDoc.getCursor()).thenReturn({ line: 0, ch: 0 })
       when(() =>
-        mockDoc.setCursor({ line: 0, ch: 1 }, undefined, { origin: Origin.RenderHandler }),
+        mockDoc.setCursor({ line: 0, ch: 1 }, undefined, { origin: "origin" }),
       ).thenReturn()
 
       Docs.clampCursorToRange(
         mockDoc,
         Range.of({ from: { line: 0, ch: 1 }, to: { line: 0, ch: 2 } }),
-        Origin.RenderHandler,
+        "origin",
       )
     })
 
@@ -253,13 +251,13 @@ describe("Docs", () => {
       const mockDoc = mock<Doc>()
       when(() => mockDoc.getCursor()).thenReturn({ line: 0, ch: 2 })
       when(() =>
-        mockDoc.setCursor({ line: 0, ch: 1 }, undefined, { origin: Origin.RenderHandler }),
+        mockDoc.setCursor({ line: 0, ch: 1 }, undefined, { origin: "origin" }),
       ).thenReturn()
 
       Docs.clampCursorToRange(
         mockDoc,
         Range.of({ from: { line: 0, ch: 0 }, to: { line: 0, ch: 1 } }),
-        Origin.RenderHandler,
+        "origin",
       )
     })
 
@@ -267,7 +265,7 @@ describe("Docs", () => {
       Docs.clampCursorToRange(
         InlineDoc`^ `,
         Range.of({ from: { line: 0, ch: 0 }, to: { line: 0, ch: 1 } }),
-        Origin.RenderHandler,
+        "origin",
       )
     })
 
@@ -275,7 +273,7 @@ describe("Docs", () => {
       Docs.clampCursorToRange(
         InlineDoc` ^ `,
         Range.of({ from: { line: 0, ch: 0 }, to: { line: 0, ch: 3 } }),
-        Origin.RenderHandler,
+        "origin",
       )
     })
 
@@ -283,7 +281,7 @@ describe("Docs", () => {
       Docs.clampCursorToRange(
         InlineDoc` ^`,
         Range.of({ from: { line: 0, ch: 0 }, to: { line: 0, ch: 1 } }),
-        Origin.RenderHandler,
+        "origin",
       )
     })
   })
