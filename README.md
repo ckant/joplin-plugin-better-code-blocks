@@ -23,7 +23,7 @@
   <a href="#license">License</a>
 </p>
 
-![preview](https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/preview.gif)
+<div align="center"><img src="https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/preview.gif" alt="preview" width="87%"></div>
 
 ## Features
 
@@ -34,9 +34,9 @@
 
 ## Screenshots
 
-![minimal layout](media/minimal%20layout.png)
-![standard layout](media/standard%20layout.png)
-![settings](media/settings.png)
+![minimal layout](https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/minimal%20layout.png)
+![standard layout](https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/standard%20layout.png)
+![settings](https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/settings.png)
 
 ## Download
 
