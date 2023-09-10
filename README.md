@@ -8,10 +8,11 @@
 <h4 align="center"><a href="https://joplinapp.org" target="_blank">Joplin plugin</a> that enhances code blocks with inline rendering, autocompletion, and more</h4>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/joplin-plugin-better-code-blocks"><img src="https://img.shields.io/npm/v/joplin-plugin-better-code-blocks.svg?color=blue" /></a>
+    <a href="https://discourse.joplinapp.org/t/plugin-better-code-blocks/32613"><img src="https://img.shields.io/npm/v/joplin-plugin-better-code-blocks?logo=joplin&label=plugin&color=1071D3&style=flat-square" /></a>
   <a href="https://github.com/ckant/joplin-plugin-better-code-blocks/blob/main/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg" target="_blank" />
+    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-549E6A?style=flat-square" target="_blank" />
   </a>
+    <a href="https://app.codecov.io/github/ckant/joplin-plugin-better-code-blocks"><img src="https://img.shields.io/codecov/c/github/ckant/joplin-plugin-better-code-blocks?logo=codecov&style=flat-square" /></a>
 </p>
 
 <p align="center">
