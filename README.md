@@ -1,18 +1,22 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/logo.svg" alt="logo" width="100">
+  <img alt="logo" src="https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/logo.svg" width="100">
   <br>
   Better Code Blocks
   <br>
 </h1>
 
-<h4 align="center"><a href="https://joplinapp.org" target="_blank">Joplin plugin</a> that enhances code blocks with inline rendering, autocompletion, and more</h4>
+<h4 align="center"><a href="https://joplinapp.org">Joplin plugin</a> that enhances code blocks with inline rendering, autocompletion, and more</h4>
 
 <p align="center">
-    <a href="https://discourse.joplinapp.org/t/plugin-better-code-blocks/32613"><img src="https://img.shields.io/npm/v/joplin-plugin-better-code-blocks?logo=joplin&label=plugin&color=1071D3&style=flat-square" /></a>
-  <a href="https://github.com/ckant/joplin-plugin-better-code-blocks/blob/main/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-549E6A?style=flat-square" target="_blank" />
+  <a href="https://discourse.joplinapp.org/t/plugin-better-code-blocks/32613">
+    <img alt="Joplin Plugin" src="https://img.shields.io/npm/v/joplin-plugin-better-code-blocks?logo=joplin&label=plugin&color=1071D3&style=flat-square" />
   </a>
-    <a href="https://app.codecov.io/github/ckant/joplin-plugin-better-code-blocks"><img src="https://img.shields.io/codecov/c/github/ckant/joplin-plugin-better-code-blocks?logo=codecov&style=flat-square" /></a>
+  <a href="https://github.com/ckant/joplin-plugin-better-code-blocks/blob/main/LICENSE">
+    <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-549E6A?style=flat-square" />
+  </a>
+  <a href="https://app.codecov.io/github/ckant/joplin-plugin-better-code-blocks">
+    <img alt="Coverage" src="https://img.shields.io/codecov/c/github/ckant/joplin-plugin-better-code-blocks?logo=codecov&style=flat-square" />
+  </a>
 </p>
 
 <p align="center">
@@ -46,7 +50,7 @@ Search for `Better Code Blocks` in the Joplin settings under the `Plugins` secti
 ## Settings
 
 | Setting                                             | Options                             | Description                                                                           |
-|-----------------------------------------------------|-------------------------------------|---------------------------------------------------------------------------------------|
+| --------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------- |
 | Autocompletion                                      | `Enabled`, `Disabled`               | Enables/disables automatic completion of code blocks when <kbd>Enter</kbd> is pressed |
 | Rendering                                           | `Enabled`, `Disabled`               | Enables/disables rendering of code blocks                                             |
 | Behavior of <kbd>Select All</kbd> inside code block | `Enabled`, `Disabled`               | Changes the behavior of <kbd>Select All</kbd> while the cursor is inside code blocks  |
