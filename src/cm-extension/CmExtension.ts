@@ -48,10 +48,18 @@ export class CmExtension {
   }
 
   private constructor(props: CmExtensionProps) {
+    injectHtmlDataAttributes(props)
     registerEventHandlers(props)
     defineExtension(props)
-    injectHtmlDataAttributes(props)
   }
+}
+
+function injectHtmlDataAttributes({ config, editor }: CmExtensionProps): void {
+  const codeMirrorWrapper = editor.getWrapperElement()
+
+  codeMirrorWrapper.dataset.cbCornerStyle = config.cornerStyle
+  codeMirrorWrapper.dataset.cbRendering = config.rendering
+  codeMirrorWrapper.dataset.cbRenderLayout = config.renderLayout
 }
 
 function registerEventHandlers({
@@ -62,9 +70,9 @@ function registerEventHandlers({
   selectHandler,
 }: CmExtensionProps): void {
   if (config.rendering === "enabled") {
-    editor.on("change", (cm, change) => renderHandler.renderOnChange(cm, change))
-
     renderHandler.renderNow(editor)
+
+    editor.on("change", (cm, change) => renderHandler.renderOnChange(cm, change))
   }
 
   if (config.completion === "enabled") {
@@ -81,12 +89,4 @@ function registerEventHandlers({
 function defineExtension({ codeMirror, requestHandler }: CmExtensionProps): void {
   const extension: CmExtensionRequestHandler = (it) => requestHandler.handle(it)
   codeMirror.defineExtension(CmExtension.extensionName, extension)
-}
-
-function injectHtmlDataAttributes({ config, editor }: CmExtensionProps): void {
-  const codeMirrorWrapper = editor.getWrapperElement()
-
-  codeMirrorWrapper.dataset.cbCornerStyle = config.cornerStyle
-  codeMirrorWrapper.dataset.cbRendering = config.rendering
-  codeMirrorWrapper.dataset.cbRenderLayout = config.renderLayout
 }

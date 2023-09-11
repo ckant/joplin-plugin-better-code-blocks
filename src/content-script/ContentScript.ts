@@ -1,8 +1,6 @@
 import { CmContentScript, CmContentScriptAssets } from "api/types"
 import CodeMirror, { Editor } from "codemirror"
 
-import { nil } from "@ext/stdlib/existence"
-
 import { CmExtension } from "@cm-extension/CmExtension"
 
 const cmExtensionOption = `enable${CmExtension.extensionName}`
@@ -59,9 +57,8 @@ export class ContentScript implements CmContentScript {
    * config) which isn't available until later in the Joplin setup process.
    */
   plugin(codeMirror: typeof CodeMirror): void {
-    codeMirror.defineOption(cmExtensionOption, false, (editor, newValue) => {
-      if (nil(newValue)) return
-
+    codeMirror.defineOption(cmExtensionOption, false, (editor, newValue: boolean) => {
+      if (!newValue) return
       void this.initalizeCmExtension(codeMirror, editor)
     })
   }

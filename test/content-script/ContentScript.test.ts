@@ -27,7 +27,7 @@ describe("ContentScript", () => {
       expect(option.updateFunc).toBeDefined()
     })
 
-    it("doesn't define extension if passed nil", async () => {
+    it("doesn't define extension if passed false", async () => {
       const fakeCodeMirror = FakeCodeMirror.create()
       const mockCreateCmExtension = mock<ContentScriptProps["createCmExtension"]>()
 
@@ -36,7 +36,7 @@ describe("ContentScript", () => {
         styles: [],
       }).plugin(fakeCodeMirror)
 
-      fakeCodeMirror.ext.option!.updateFunc(FakeEditor.create(), undefined, "unused")
+      fakeCodeMirror.ext.option!.updateFunc(FakeEditor.create(), false, "unused")
       await Vitest.settlePendingPromises()
     })
 
