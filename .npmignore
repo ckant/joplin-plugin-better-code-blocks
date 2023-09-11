@@ -17,6 +17,7 @@ types/
 .prettierignore
 .prettierrc.mjs
 .vale.ini
+CHANGELOG.md
 GENERATOR_DOC.md
 stylelint.config.mjs
 tsconfig.json
