@@ -1,23 +1,23 @@
 .idea/
 .vscode/
 
-/api
-/coverage
-/dist
-/media
-/src
-/styles
-/test
-/test-integration
-/test-support
-/types
+.github/
+api/
+coverage/
+dist/
+media/
+src/
+styles/
+test/
+test-integration/
+test-support/
+types/
 
 .eslintrc.cjs
 .prettierignore
 .prettierrc.mjs
 .vale.ini
 GENERATOR_DOC.md
-
 stylelint.config.mjs
 tsconfig.json
 vitest.config.ts
