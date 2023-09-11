@@ -4,8 +4,10 @@
   "scripts": {
     "coverage": "vitest --coverage",
     "dist": "webpack --env joplin-plugin-config=buildMain && webpack --env joplin-plugin-config=buildExtraScripts && webpack --env joplin-plugin-config=createArchive",
-    "lint": "eslint src test test-integration test-support",
-    "lint:fix": "eslint --fix src test test-integration test-support",
+    "lint": "echo 'Running eslint' && npm run eslint && echo 'Running stylelint' && npm run stylelint && echo 'Running vale' && npm run vale",
+    "lint:ci": "(trap 'RC=1' ERR; echo 'Running eslint'; npm run eslint; echo 'Running stylelint'; npm run stylelint; exit $RC)",
+    "eslint": "eslint src test test-integration test-support",
+    "eslint:fix": "eslint --fix src test test-integration test-support",
     "prepare": "npm run dist",
     "stylelint": "stylelint src/**/*.css",
     "test": "vitest",
