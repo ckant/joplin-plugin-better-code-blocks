@@ -76,10 +76,7 @@ export namespace Docs {
       line++
     })
 
-    if (cont && line === insertedLine) {
-      fn({ line, text: insertedText, endIteration })
-      line++
-    }
+    if (cont && line === insertedLine) fn({ line, text: insertedText, endIteration })
   }
 
   /**

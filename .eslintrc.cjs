@@ -39,6 +39,7 @@ const simpleInputSortRules = {
           "^fs",
           "^happy-dom",
           "^jest-extended",
+          "^@mobily",
           "^strong-mock",
           "^@ts-belt",
           "^type-fest",
@@ -197,7 +198,7 @@ const unicornRules = {
   // Require `new` with built-ins for consistency (e.g. `new RegExp()` instead of `RegExp()`)
   "unicorn/new-for-builtins": "error",
 
-  // Require the use of `null` in favor of `undefined` for consistency, power, and less confusion
+  // Disallow use of `null` in favor of `undefined` for consistency, power, and less confusion
   "unicorn/no-null": "error",
 
   // Disallow use of `Array#indexOf` and `Array#some` when `Array#includes` is clearer

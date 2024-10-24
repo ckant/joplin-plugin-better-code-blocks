@@ -9,13 +9,13 @@ export interface Marker {
   /**
    * Marks the given {@link codeBlocks} in {@link doc}.
    *
-   * e.g. add line classes to lines within {@link codeBlocks}.
+   * e.g. adding line classes to lines within {@link codeBlocks}.
    */
   mark(doc: Doc, codeBlocks: readonly CodeBlock[]): void
 }
 export namespace Marker {
   /**
-   * Adapts multiple {@link markers} into a single {@link Marker}  (applied first to last).
+   * Adapts multiple {@link markers} into a single {@link Marker} (applied first to last).
    */
   export function combine(...markers: readonly Marker[]): Marker {
     return {

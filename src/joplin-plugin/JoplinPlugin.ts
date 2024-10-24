@@ -26,7 +26,7 @@ export interface JoplinPluginProps<Settings> {
 }
 
 /**
- * The {@link pluginName} Joplin plugin.
+ * BetterCodeBlocks Joplin plugin.
  *
  * - Registers {@link settingSection} in {@link joplin#settings}.
  * - Registers Code Mirror {@link contentScript} in {@link joplin#contentScripts}.

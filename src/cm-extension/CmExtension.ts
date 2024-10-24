@@ -19,9 +19,14 @@ export interface CmExtensionProps {
 }
 
 /**
- * The {@link extensionName} Code Mirror extension.
+ * BetterCodeBlocks Code Mirror extension.
  *
- * Adds event handlers to {@link codeMirror}:
+ * Injects HTML data attributes into the root CodeMirror wrapper {@link HTMLElement}:
+ * - Sets `data-cb-corner-style` to {@link config#cornerStyle}
+ * - Sets `data-cb-rendering` to {@link config#rendering}
+ * - Sets `data-cb-render-layout` to {@link config#renderLayout}
+ *
+ * Registers event handlers to {@link codeMirror}:
  * - On change, {@link renderHandler} renders code fences if {@link config#rendering} is `enabled`
  * - On `Enter` pressed, {@link completeHandler} automatically completes incomplete
  * code fences if {@link config#completion} is `enabled`
@@ -30,11 +35,6 @@ export interface CmExtensionProps {
  *
  * Defines a code mirror extension with {@link CodeMirror#defineExtension} that handles
  * inter-process communication from the Joplin plugin using {@link requestHandler}.
- *
- * Injects data attributes into the root CodeMirror wrapper {@link HTMLElement}:
- * - Sets `data-cb-corner-style` to {@link config#cornerStyle}
- * - Sets `data-cb-rendering` to {@link config#rendering}
- * - Sets `data-cb-render-layout` to {@link config#renderLayout}
  *
  * Renders code fences immediately with {@link renderHandler}.
  *

@@ -13,7 +13,7 @@ export interface RequestHandlerProps {
 }
 
 /**
- * Handles request to the Joplin plugin (through inter-process communication).
+ * Handles requests to the Joplin plugin (through inter-process communication).
  *
  * Returns settings using the {@link pluginSettingsProvider}.
  */

@@ -40,14 +40,14 @@ export namespace CodeDocs {
   }
 
   /**
-   * Returns which of the {@link codeblocks} has the {@link doc} cursor inside it (if one exists).
+   * Returns which of the {@link codeBlocks} has the {@link doc} cursor inside it (if any).
    */
   export function getActiveCodeBlock(
     doc: ReadonlyDoc,
     codeBlocks: readonly CodeBlock[],
   ): CodeBlock | undefined {
     const { line } = doc.getCursor()
-    return codeBlocks.find((it) => it.containsLine(line, { includeBoundary: true }))
+    return codeBlocks.find((it) => it.containsLine(line, { includeFences: true }))
   }
 
   /**

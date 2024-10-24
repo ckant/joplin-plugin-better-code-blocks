@@ -11,7 +11,7 @@ export interface Formatter {
    * Formats the {@link codeBlocks} in {@link doc} and returns the formatted {@link CodeBlock}s.
    * The operation executes using the given {@link origin}.
    *
-   * e.g. add spacing to the {@link doc}, changing the position of the {@link codeBlocks}.
+   * e.g. adding spacing to the {@link doc}, changing the position of the {@link codeBlocks}.
    */
   format(doc: Doc, codeBlocks: readonly CodeBlock[], origin: Origin): readonly CodeBlock[]
 }

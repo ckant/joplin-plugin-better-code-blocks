@@ -2,7 +2,7 @@
  * CodeMirror code fence line elements.
  */
 .cm-jn-code-block span[role="presentation"] {
-  /* Removes extra height added to code fences  */
+  /* Remove extra height added to code fences  */
   line-height: 0;
 }
 
@@ -17,7 +17,7 @@
  * Text of a code line in the code fence.
  */
 .CodeMirror[data-cb-rendering="enabled"] .cb-code-text {
-  /* Allows placement of copy button on top of code text */
+  /* Allow placement of copy button on top of code text */
   z-index: auto;
 }
 

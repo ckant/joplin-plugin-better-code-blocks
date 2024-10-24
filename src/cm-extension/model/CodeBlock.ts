@@ -124,15 +124,14 @@ export class CodeBlock {
 
   /**
    * Returns true if the code block overlaps the given {@link line}.
-   * This check may optionally {@link includeBoundary}  of the code block.
+   * This check may optionally {@link includeFences} of the code block.
    *
    * The {@link line} must be a non-negative integer.
    */
-  containsLine(line: number, options?: { includeBoundary: boolean }): boolean {
+  containsLine(line: number, options?: { includeFences: boolean }): boolean {
     Require.nonNegativeInteger(line)
 
-    const includeBoundary = options?.includeBoundary ?? false
-    if (includeBoundary) {
+    if (options?.includeFences ?? false) {
       return line >= this.startLine && line <= this.endLine
     } else {
       return line > this.startLine && line < this.endLine

@@ -14,7 +14,7 @@ export interface ContentScriptProps {
 }
 
 /**
- * Joplin content script for the {@link CmExtension.extensionName} Code Mirror extension.
+ * Joplin content script for the BetterCodeBlocks Code Mirror extension.
  *
  * Registers the Code Mirror extension created by {@link createCmExtension}.
  * Specifies assets of the given {@link styles}.

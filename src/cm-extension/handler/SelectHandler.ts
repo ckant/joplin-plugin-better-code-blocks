@@ -11,7 +11,7 @@ export interface SelectHandlerProps {
 }
 
 /**
- * Handles selection of code fences found by the given {@link rangeFinder}.
+ * Handles selection of code fences using the given {@link rangeFinder}.
  */
 export class SelectHandler {
   private readonly rangeFinder: RangeFinder

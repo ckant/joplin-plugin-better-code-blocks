@@ -26,7 +26,7 @@ export class RenderHandler {
    *
    * The operation executes using {@link Origin#RenderHandler}.
    *
-   * Ignores re-rendering that's caused by changed by {@link RenderHandler} itself.
+   * Ignores re-rendering that's caused by {@link RenderHandler} itself.
    */
   renderOnChange(cm: Editor, { origin }: EditorChange): void {
     if (origin !== Origin.RenderHandler) this.renderInternal(cm)

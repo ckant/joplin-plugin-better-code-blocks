@@ -6,7 +6,7 @@ import { def } from "@ext/stdlib/existence"
 export namespace Html {
   /**
    * Creates a button with the given {@link className}, {@link title}, and {@link onClick}.
-   * Appends the {@link child}.
+   * Appends the {@link children}.
    */
   export function button(props: {
     className: string
@@ -19,7 +19,7 @@ export namespace Html {
 
   /**
    * Creates a span with the given {@link className} and {@link textContent}.
-   * Appends the {@link child}, if given.
+   * Appends the {@link children}, if given.
    */
   export function span(props: {
     className: string

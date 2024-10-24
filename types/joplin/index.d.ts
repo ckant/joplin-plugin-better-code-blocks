@@ -118,7 +118,7 @@ declare module "api/types" {
    *     },
    *     // ...
    *   },
-   *   "int": {
+   *   "arr": {
    *     type: SettingsItemType.String,
    *     // ...
    *   },

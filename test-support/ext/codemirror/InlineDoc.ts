@@ -12,7 +12,7 @@ import { def } from "@ext/stdlib/existence"
  * <pre>
  * const doc = InlineDoc\`
  *   first line^
- *   last line
+ *   second line
  * \`
  * </pre>
  *

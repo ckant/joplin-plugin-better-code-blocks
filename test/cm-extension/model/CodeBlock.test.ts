@@ -115,31 +115,31 @@ describe("CodeBlock", () => {
       })
     })
 
-    describe("excluding boundary", () => {
+    describe("excluding fences", () => {
       it("contains line", () => {
-        expect(codeBlockSpanning(0, 2).containsLine(1, { includeBoundary: false })).toBe(true)
+        expect(codeBlockSpanning(0, 2).containsLine(1, { includeFences: false })).toBe(true)
       })
 
       it("doesn't contain start", () => {
-        expect(codeBlockSpanning(0, 1).containsLine(0, { includeBoundary: false })).toBe(false)
+        expect(codeBlockSpanning(0, 1).containsLine(0, { includeFences: false })).toBe(false)
       })
 
       it("doesn't contain end", () => {
-        expect(codeBlockSpanning(0, 1).containsLine(1, { includeBoundary: false })).toBe(false)
+        expect(codeBlockSpanning(0, 1).containsLine(1, { includeFences: false })).toBe(false)
       })
     })
 
-    describe("including boundary", () => {
+    describe("including fences", () => {
       it("contains line", () => {
-        expect(codeBlockSpanning(0, 2).containsLine(1, { includeBoundary: true })).toBe(true)
+        expect(codeBlockSpanning(0, 2).containsLine(1, { includeFences: true })).toBe(true)
       })
 
       it("contains start", () => {
-        expect(codeBlockSpanning(0, 2).containsLine(0, { includeBoundary: true })).toBe(true)
+        expect(codeBlockSpanning(0, 2).containsLine(0, { includeFences: true })).toBe(true)
       })
 
       it("contains end", () => {
-        expect(codeBlockSpanning(0, 2).containsLine(2, { includeBoundary: true })).toBe(true)
+        expect(codeBlockSpanning(0, 2).containsLine(2, { includeFences: true })).toBe(true)
       })
     })
 

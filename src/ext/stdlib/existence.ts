@@ -3,7 +3,7 @@ import { Guards } from "@ts-belt"
 /**
  * Returns true if the given value exists (is neither `undefined` nor `null`).
  *
- * Short replacement for somewhat unclean `if (value !== null)` checks which use coercion and `null`
+ * Short replacement for somewhat unclean `if (value != null)` checks which use coercion and `null`
  * and unsafe `if (value)` checks which use coercion and match `""`, `0`, and `NaN` as well.
  *
  * Coercion to boolean and mixing `null` and `undefined` often lead to hard-to-spot bugs.

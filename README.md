@@ -49,15 +49,15 @@ Search for `Better Code Blocks` in the Joplin settings under the `Plugins` secti
 
 ## Settings
 
-| Setting                                             | Options                             | Description                                                                           |
-| --------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------- |
-| Autocompletion                                      | `Enabled`, `Disabled`               | Enables/disables automatic completion of code blocks when <kbd>Enter</kbd> is pressed |
-| Rendering                                           | `Enabled`, `Disabled`               | Enables/disables rendering of code blocks                                             |
-| Behavior of <kbd>Select All</kbd> inside code block | `Enabled`, `Disabled`               | Changes the behavior of <kbd>Select All</kbd> while the cursor is inside code blocks  |
-| Render layout                                       | `Minimal`, `Standard`               | Changes the layout of rendered code blocks                                            |
-| Corner style                                        | `Square`, `Round`                   | Changes the border style of rendered code blocks                                      |
-| Excluded languages                                  | `(comma-separated list)`            | Disables rendering of code blocks for specific languages                              |
-| Copy button behavior                                | `Copy code`, `Copy code and fences` | Controls what's copied when the <kbd>Copy Code</kbd> button is clicked                |
+| Setting                                             | Options                                          | Description                                                                           |
+| --------------------------------------------------- |--------------------------------------------------| ------------------------------------------------------------------------------------- |
+| Autocompletion                                      | `Enabled`, `Disabled`                            | Enables/disables automatic completion of code blocks when <kbd>Enter</kbd> is pressed |
+| Rendering                                           | `Enabled`, `Disabled`                            | Enables/disables rendering of code blocks                                             |
+| Behavior of <kbd>Select All</kbd> inside code block | `Select current code block`, `Select everything` | Changes the behavior of <kbd>Select All</kbd> while the cursor is inside code blocks  |
+| Render layout                                       | `Minimal`, `Standard`                            | Changes the layout of rendered code blocks                                            |
+| Corner style                                        | `Square`, `Round`                                | Changes the border style of rendered code blocks                                      |
+| Excluded languages                                  | `(comma-separated list)`                         | Disables rendering of code blocks for specific languages                              |
+| Copy button behavior                                | `Copy code`, `Copy code and fences`              | Controls what's copied when the <kbd>Copy Code</kbd> button is clicked                |
 
 ## Credits
 

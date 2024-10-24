@@ -1,7 +1,7 @@
 /**
  * The Joplin plugin settings.
  *
- * Duplicate of {@link PluginSettings} to decouple the Jopljn plugin and the CodeMirror extension.
+ * Duplicate of {@link PluginSettings} to decouple the Joplin plugin and the CodeMirror extension.
  * The CodeMirror extension can remain standalone and couple solely with `joplin-plugin-ipc`.
  *
  * @see PluginSettings

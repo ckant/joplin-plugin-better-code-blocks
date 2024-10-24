@@ -16,8 +16,8 @@ const testConfig: UserConfig = {
       // Exclude files that contain only type definitions which show up
       // as having 0% coverage for some reason
       exclude: [
-        "src/cm-extension/marker/line-styler/LineStyle.ts*",
-        "src/cm-extension/marker/widgeter/Widget.ts*",
+        "src/cm-extension/marker/line-styler/LineStyle.ts",
+        "src/cm-extension/marker/widgeter/Widget.ts",
         "src/cm-extension/model/Config.ts",
         "src/cm-extension-ipc/model/*",
         "src/joplin-plugin/settings/PluginSettings.ts",

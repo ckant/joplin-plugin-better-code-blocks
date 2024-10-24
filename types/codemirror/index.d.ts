@@ -8,13 +8,13 @@ declare module "codemirror" {
     /**
      * Set a CSS class name for the given line.
      *
-     * line can be a number or a line handle.
-     * where determines to which element this class should be applied,
+     * `line` can be a number or a line handle.
+     * `where` determines to which element this class should be applied,
      * can be one of
-     *  "text" (the text element, which lies in front of the selection),
-     *  "background" (a background element that will be behind the selection),
-     *  "gutter" (the line's gutter space), or
-     *  "wrap" (the wrapper node that wraps all of the line's elements, including gutter elements).
+     * - "text" (the text element, which lies in front of the selection),
+     * - "background" (a background element that will be behind the selection),
+     * - "gutter" (the line's gutter space), or
+     * - "wrap" (the wrapper node that wraps all of the line's elements, including gutter elements).
      * class should be the name of the class to apply.
      *
      * This function is missing from the codemirror type definitions.
@@ -31,11 +31,11 @@ declare module "codemirror" {
     /**
      * Remove a CSS class from a line.
      *
-     * line can be a line handle or number.
-     * where should be one of
-     *   "text",
-     *   "background", or
-     *   "wrap" (see addLineClass).
+     * `line` can be a line handle or number.
+     * `where` should be one of
+     * - "text",
+     * - "background", or
+     * - "wrap" (see addLineClass).
      * class can be left off to remove all classes for the specified node,
      * or be a string to remove only a specific class.
      *
