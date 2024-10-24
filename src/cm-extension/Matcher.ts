@@ -11,7 +11,7 @@ export namespace Matcher {
    * Matches the start of a CodeMirror code fence.
    *
    * - Start of line
-   * - An (optional) `indent` of 0 to 3 spaces or tabs
+   * - An (optional) `indent` of 0 to 3 spaces
    * - A `tag` of 3 or more ~ or \`
    * - Any amount of spaces or tabs
    * - The (optional) `lang` consisting of any amount of word characters or /, +, #, -
@@ -25,14 +25,14 @@ export namespace Matcher {
    * @see https://spec.commonmark.org/0.30/#fenced-code-blocks
    */
   const codeBlockStart = function (): RegExp {
-    return /^(?<indent>[ \t]{0,3})(?<tag>~~~+|```+)[ \t]*(?<lang>[\w/+#-]*)[^\n`]*$/
+    return /^(?<indent> {0,3})(?<tag>~~~+|```+)[ \t]*(?<lang>[\w/+#-]*)[^\n`]*$/
   }
 
   /**
    * Matches the end of a CodeMirror code fence.
    *
    * - Start of line
-   * - An (optional) indent of 0 to 3 spaces or tabs characters
+   * - An (optional) indent of 0 to 3 spaces
    * - The start tag with any amount of extra ~ or \` (depending on which the start tag uses)
    * - Any amount of **spaces** (note: doesn't allow tabs here, as the start sequence does)
    * - End of line
@@ -45,7 +45,7 @@ export namespace Matcher {
    */
   const codeBlockEnd = function (tag: string): RegExp {
     // Note that ${tag}+ translates to ```+ or ~~~+
-    return new RegExp(`[ \t]{0,3}${tag}+ *$`)
+    return new RegExp(`^ {0,3}${tag}+ *$`)
   }
 
   /**
