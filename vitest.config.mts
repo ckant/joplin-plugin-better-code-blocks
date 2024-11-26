@@ -1,11 +1,11 @@
-import { defineConfig, mergeConfig, UserConfig } from "vitest/config"
+import { defineConfig, mergeConfig, ViteUserConfig } from "vitest/config"
 
 import tsconfigPaths from "vite-tsconfig-paths"
 
 /**
  * Configuration for tests.
  */
-const testConfig: UserConfig = {
+const testConfig: ViteUserConfig = {
   plugins: [tsconfigPaths()],
   test: {
     setupFiles: ["./test-support/TestSetup.ts"],

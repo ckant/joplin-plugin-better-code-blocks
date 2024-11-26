@@ -1,9 +1,14 @@
-/* eslint-env node */
+import { FlatCompat } from "@eslint/eslintrc"
+import js from "@eslint/js"
+import typescriptEslint from "@typescript-eslint/eslint-plugin"
+import tsParser from "@typescript-eslint/parser"
+import simpleImportSort from "eslint-plugin-simple-import-sort"
+import tsdoc from "eslint-plugin-tsdoc"
+import unicorn from "eslint-plugin-unicorn"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
 
 const eslintRules = {
-  // Require return statements for consistency and typo reduction
-  "consistent-return": "error",
-
   // Disallow relative imports for better visibility into module coupling
   "no-restricted-imports": ["error", { patterns: [".*"] }],
 
@@ -18,11 +23,6 @@ const eslintRules = {
   "no-shadow": "off",
 }
 
-const tsdocRules = {
-  // Check TSDoc syntax for consistency
-  "tsdoc/syntax": "error",
-}
-
 const simpleInputSortRules = {
   // Sort imports for consistency
   "simple-import-sort/imports": [
@@ -35,10 +35,12 @@ const simpleInputSortRules = {
         // 3rd party packages
         [
           "^api",
+          "^@codemirror",
           "^codemirror",
           "^fs",
           "^happy-dom",
           "^jest-extended",
+          "^@lezer",
           "^@mobily",
           "^strong-mock",
           "^@ts-belt",
@@ -73,6 +75,11 @@ const simpleInputSortRules = {
       ],
     },
   ],
+}
+
+const tsdocRules = {
+  // Check TSDoc syntax for consistency
+  "tsdoc/syntax": "error",
 }
 
 const typescriptEslintRules = {
@@ -153,6 +160,12 @@ const typescriptEslintRules = {
       leadingUnderscore: "allow",
       trailingUnderscore: "allow",
     },
+
+    // Allow pascal case for default and namespace imports
+    {
+      selector: "import",
+      format: ["PascalCase", "strictCamelCase"],
+    },
   ],
 
   // Allow unused vars that begin with an underscore
@@ -226,25 +239,43 @@ const unicornRules = {
   "unicorn/throw-new-error": "error",
 }
 
-module.exports = {
-  extends: [
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
+})
+
+export default [
+  ...compat.extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier",
-  ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: true,
-    tsconfigRootDir: __dirname,
+  ),
+  {
+    plugins: {
+      tsdoc,
+      "simple-import-sort": simpleImportSort,
+      "@typescript-eslint": typescriptEslint,
+      unicorn,
+    },
+    languageOptions: {
+      parser: tsParser,
+      ecmaVersion: 5,
+      sourceType: "script",
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
+    rules: {
+      ...eslintRules,
+      ...simpleInputSortRules,
+      ...tsdocRules,
+      ...typescriptEslintRules,
+      ...unicornRules,
+    },
   },
-  plugins: ["eslint-plugin-tsdoc", "simple-import-sort", "@typescript-eslint", "unicorn"],
-  root: true,
-  rules: {
-    ...eslintRules,
-    ...simpleInputSortRules,
-    ...tsdocRules,
-    ...typescriptEslintRules,
-    ...unicornRules,
-  },
-}
+]

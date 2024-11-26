@@ -13,13 +13,13 @@ test-integration/
 test-support/
 types/
 
-.eslintrc.cjs
 .prettierignore
 .prettierrc.mjs
 .vale.ini
 CHANGELOG.md
+eslint.config.mjs
 GENERATOR_DOC.md
 stylelint.config.mjs
 tsconfig.json
-vitest.config.ts
+vitest.config.mts
 webpack.config.js

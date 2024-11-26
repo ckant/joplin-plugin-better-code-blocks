@@ -2,12 +2,13 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "module": "commonjs",
-    "target": "es2015",
+    "target": "es2019",
     "jsx": "react",
     "allowJs": true,
     "baseUrl": ".",
     "strict": true,
     "allowSyntheticDefaultImports": true,
+    "noImplicitReturns": true,
     "paths": {
       "@ts-belt": ["src/ext/ts-belt/alias"],
       "@ext/*": ["src/ext/*"],
