@@ -5,7 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/ckant/joplin-plugin-better-code-blocks/compare/v1.1.0...HEAD)
+## [Unreleased](https://github.com/ckant/joplin-plugin-better-code-blocks/compare/v2.0.0...HEAD)
+
+## [2.0.0](https://github.com/ckant/joplin-plugin-better-code-blocks/compare/v1.1.0...v2.0.0) - 2024-11-25
+
+### Added
+
+- Support for CodeMirror 6
+  - Native autocomplete for given languages
+  - Cursor placement before and after code blocks to simplify adding /removing line breaks
+  - Some tricks to prevent accidental deletion of code blocks
+  - Branching logic to choose between CodeMirror 5 and 6
+
+### Fixed
+
+- CodeMirror 5 implementation leniency with 1-3 tab characters at the start of code fences
+
+### Changed
+
+- Update dependencies
 
 ## [1.1.0](https://github.com/ckant/joplin-plugin-better-code-blocks/compare/v1.0.0...v1.1.0) - 2023-09-10
 
