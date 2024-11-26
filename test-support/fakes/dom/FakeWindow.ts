@@ -58,6 +58,7 @@ class ExtendedWindow implements PartialWindow, Extensions {
       throw new TypeError("string handler is unsupported")
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call -- setTimeout uses Function
     const run: () => unknown = () => handler()
     this.ext.setTimeouts.push({ run, timeout })
     if (!this.pauseTimeouts) run()

@@ -1,0 +1,47 @@
+/**
+ * Background of the start and end (non-code) line in a code fence.
+ *
+ * e.g. Background of starting `~~~typescript` and ending `~~~`
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="minimal"] .cb-start-background,
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="minimal"] .cb-end-background {
+  background: none;
+}
+
+/**
+ * Wrap of first code line with round top corners.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="minimal"][data-cb-corner-style="round"] .cb-code-background.cb-first {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+/**
+ * Wrap of last code line with round bottom corners.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="minimal"][data-cb-corner-style="round"] .cb-code-background.cb-last {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+/**
+ * Opening and closing fence widgets (non-code).
+ *
+ * e.g. Widget that replaces `~~~typescript` and `~~~`
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="minimal"] .cb-opening-fence,
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="minimal"] .cb-closing-fence {
+  visibility: hidden;
+}
+
+/**
+ * Button inside start widget that copies code within a code fence.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="minimal"] .cb-copy-btn {
+  /* Lower the button onto the rightmost edge of the first code line */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  height: 100%;
+  padding: 0.5ch;
+}

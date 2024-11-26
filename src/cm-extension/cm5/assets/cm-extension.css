@@ -1,0 +1,92 @@
+/**
+ * CodeMirror code fence line elements.
+ */
+.CodeMirror:not(.cm-editor) .cm-jn-code-block span[role="presentation"] {
+  /* Remove extra height added to code fences  */
+  line-height: 0;
+}
+
+/**
+ * Text of the start line in the code fence.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-rendering="enabled"] .cb-start-text {
+  padding-right: 0;
+}
+
+/**
+ * Text of a code line in the code fence.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-rendering="enabled"] .cb-code-text {
+  /* Allow placement of copy button on top of code text */
+  z-index: auto;
+}
+
+/**
+ * Widget that replaces the start and end (non-code) line in a code fence.
+ *
+ * e.g. Widget replacing starting `~~~typescript` and ending `~~~`
+ */
+.CodeMirror:not(.cm-editor) .cb-start-widget,
+.CodeMirror:not(.cm-editor) .cb-end-widget {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/**
+ * Opening and closing fence widgets (non-code).
+ *
+ * e.g. Widget that replaces `~~~typescript` and `~~~`
+ */
+.CodeMirror:not(.cm-editor) .cb-opening-fence,
+.CodeMirror:not(.cm-editor) .cb-closing-fence {
+  color: var(--joplin-color-faded);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/**
+ * Button inside start widget that copies code within a code fence.
+ */
+.CodeMirror:not(.cm-editor) .cb-copy-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 0s;
+}
+
+.CodeMirror:not(.cm-editor) .cb-copy-btn:hover {
+  opacity: 1;
+}
+
+/**
+ * Copy button click transition state.
+ */
+.CodeMirror:not(.cm-editor) .cb-copy-btn.cb-copied {
+  opacity: 1;
+}
+
+/**
+ * Font Awesome icon inside the copy button.
+ */
+.CodeMirror:not(.cm-editor) .cb-copy-btn .fa-solid {
+  font-family: "Font Awesome 5 Free", sans-serif !important;
+  font-size: 2.5ch;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--joplin-color-faded);
+  -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Text inside end widget that shows the code fence language.
+ */
+.CodeMirror:not(.cm-editor) .cb-lang {
+  margin-right: -4px;
+  color: var(--joplin-color-faded);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}

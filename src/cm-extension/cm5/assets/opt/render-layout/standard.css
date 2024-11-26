@@ -1,0 +1,29 @@
+/**
+ * Wrap of start line with round top corners.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="standard"][data-cb-corner-style="round"] .cb-start-background {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+/**
+ * Wrap of end line with round bottom corners.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="standard"][data-cb-corner-style="round"] .cb-end-background {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+/**
+ * Button inside start widget that copies code within a code fence.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="standard"] .cb-copy-btn {
+  padding: 0 0.5ch;
+}
+
+/**
+ * Text inside end widget that shows the code fence language.
+ */
+.CodeMirror:not(.cm-editor)[data-cb-render-layout="standard"] .cb-lang {
+  visibility: hidden;
+}

@@ -133,7 +133,7 @@ export function anElement(props?: {
   onClick?: (this: HTMLElement, e: MouseEvent) => void
 }): HTMLDivElement {
   const div = document.createElement("div")
-  if (def(props?.className)) div.className = props!.className
-  if (def(props?.onClick)) Html.addOnClick(div, props!.onClick)
+  if (def(props?.className)) div.className = props.className
+  if (def(props?.onClick)) Html.addOnClick(div, props.onClick)
   return div
 }

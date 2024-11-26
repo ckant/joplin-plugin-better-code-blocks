@@ -11,7 +11,7 @@ import {
 } from "@joplin-plugin-ipc/model/messages"
 
 import { FakeRetrier } from "test-support/fakes/stdlib/FakeRetrier"
-import { Any } from "test-support/fixtures/Any"
+import { Any } from "test-support/fixtures/cm5/Any"
 
 describe("JoplinPluginClient", () => {
   describe("new", () => {

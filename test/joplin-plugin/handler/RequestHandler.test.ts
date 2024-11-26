@@ -11,7 +11,7 @@ import {
 import { RequestHandler } from "@joplin-plugin/handler/RequestHandler"
 import { PluginSettingsProvider } from "@joplin-plugin/settings/PluginSettingsProvider"
 
-import { Any } from "test-support/fixtures/Any"
+import { Any } from "test-support/fixtures/cm5/Any"
 
 describe("RequestHandler", () => {
   const mockPluginSettingsProvider = mock<PluginSettingsProvider>()

@@ -14,7 +14,7 @@ export namespace Arrays {
   export function compact<T>(array: readonly T[]): readonly NonNullable<T>[] {
     return array.filter((it) => {
       return def(it)
-    }) as NonNullable<T>[]
+    })
   }
 
   /**
@@ -25,6 +25,6 @@ export namespace Arrays {
   export function onlyElement<T>(array: readonly T[]): T {
     Require.hasSingleElement(array)
 
-    return array[0]!
+    return array[0]
   }
 }
