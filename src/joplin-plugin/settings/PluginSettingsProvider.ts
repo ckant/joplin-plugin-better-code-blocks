@@ -30,6 +30,7 @@ export class PluginSettingsProvider {
   async provide(): Promise<PluginSettings> {
     const rawSettings = await this.provideRawSettings()
     return {
+      completedLanguages: asStringArray(rawSettings.completedLanguages),
       completion: rawSettings.completion,
       copyFormat: rawSettings.copyFormat,
       cornerStyle: rawSettings.cornerStyle,
@@ -42,6 +43,7 @@ export class PluginSettingsProvider {
 
   private async provideRawSettings(): Promise<RawPluginSettings> {
     return {
+      completedLanguages: await this.getRawSetting("completedLanguages"),
       completion: await this.getRawSetting("completion"),
       copyFormat: await this.getRawSetting("copyFormat"),
       cornerStyle: await this.getRawSetting("cornerStyle"),

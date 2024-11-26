@@ -3,20 +3,23 @@ import { describe, expect, it } from "vitest"
 
 import { ContentScript, ContentScriptProps } from "@content-script/ContentScript"
 
-import { CmExtension } from "@cm-extension/CmExtension"
+import { CmExtension as Cm5Extension } from "@cm-extension/cm5/CmExtension"
 
 import { Vitest } from "test-support/ext/vitest/Vitest"
-import { FakeEditor } from "test-support/fakes/codemirror/FakeEditor"
-import { FakeCodeMirror } from "test-support/fakes/joplin/FakeCodeMirror"
+import { FakeEditor } from "test-support/fakes/codemirror/cm5/FakeEditor"
+import { FakeCodeMirror5 } from "test-support/fakes/joplin/FakeCodeMirror5"
+import { FakeCodeMirror6 } from "test-support/fakes/joplin/FakeCodeMirror6"
 
 describe("ContentScript", () => {
   describe("create", () => {
-    it("defines plugin option", () => {
-      const fakeCodeMirror = FakeCodeMirror.create()
-      const mockCmExtension = mock<CmExtension>()
+    it("defines cm5 plugin option", () => {
+      const fakeCodeMirror = FakeCodeMirror5.create()
+      const mockCm6Extension = mock<void>()
+      const mockCm5Extension = mock<Cm5Extension>()
 
       ContentScript.create({
-        createCmExtension: () => Promise.resolve(mockCmExtension),
+        createCm6Extension: () => Promise.resolve(mockCm6Extension),
+        createCm5Extension: () => Promise.resolve(mockCm5Extension),
         styles: [],
       }).plugin(fakeCodeMirror)
 
@@ -27,12 +30,14 @@ describe("ContentScript", () => {
       expect(option.updateFunc).toBeDefined()
     })
 
-    it("doesn't define extension if passed false", async () => {
-      const fakeCodeMirror = FakeCodeMirror.create()
-      const mockCreateCmExtension = mock<ContentScriptProps["createCmExtension"]>()
+    it("doesn't define cm5 extension if passed false", async () => {
+      const fakeCodeMirror = FakeCodeMirror5.create()
+      const mockCreateCm6Extension = mock<ContentScriptProps["createCm6Extension"]>()
+      const mockCreateCm5Extension = mock<ContentScriptProps["createCm5Extension"]>()
 
       ContentScript.create({
-        createCmExtension: mockCreateCmExtension,
+        createCm6Extension: mockCreateCm6Extension,
+        createCm5Extension: mockCreateCm5Extension,
         styles: [],
       }).plugin(fakeCodeMirror)
 
@@ -40,19 +45,37 @@ describe("ContentScript", () => {
       await Vitest.settlePendingPromises()
     })
 
-    it("defines plugin extension", async () => {
-      const fakeCodeMirror = FakeCodeMirror.create()
+    it("creates cm5 plugin extension", async () => {
+      const fakeCodeMirror = FakeCodeMirror5.create()
       const fakeEditor = FakeEditor.create()
-      const mockCreateCmExtension = mock<ContentScriptProps["createCmExtension"]>()
+      const mockCreateCm6Extension = mock<ContentScriptProps["createCm6Extension"]>()
+      const mockCreateCm5Extension = mock<ContentScriptProps["createCm5Extension"]>()
 
-      when(() => mockCreateCmExtension(fakeCodeMirror, fakeEditor)).thenResolve(mock())
+      when(() => mockCreateCm5Extension(fakeCodeMirror, fakeEditor)).thenResolve(mock())
 
       ContentScript.create({
-        createCmExtension: mockCreateCmExtension,
+        createCm6Extension: mockCreateCm6Extension,
+        createCm5Extension: mockCreateCm5Extension,
         styles: [],
       }).plugin(fakeCodeMirror)
 
       fakeCodeMirror.ext.option!.updateFunc(fakeEditor, true, "unused")
+      await Vitest.settlePendingPromises()
+    })
+
+    it("creates cm6 plugin extension", async () => {
+      const fakeCodeMirror = FakeCodeMirror6.create()
+      const mockCreateCm6Extension = mock<ContentScriptProps["createCm6Extension"]>()
+      const mockCreateCm5Extension = mock<ContentScriptProps["createCm5Extension"]>()
+
+      when(() => mockCreateCm6Extension(fakeCodeMirror)).thenResolve(mock())
+
+      ContentScript.create({
+        createCm6Extension: mockCreateCm6Extension,
+        createCm5Extension: mockCreateCm5Extension,
+        styles: [],
+      }).plugin(fakeCodeMirror)
+
       await Vitest.settlePendingPromises()
     })
   })
@@ -60,7 +83,8 @@ describe("ContentScript", () => {
   describe("assets", () => {
     it("returns assets", () => {
       const contentScript = ContentScript.create({
-        createCmExtension: () => Promise.resolve(mock<CmExtension>()),
+        createCm6Extension: () => Promise.resolve(mock<void>()),
+        createCm5Extension: () => Promise.resolve(mock<Cm5Extension>()),
         styles: ["asset"],
       })
 
@@ -71,7 +95,8 @@ describe("ContentScript", () => {
   describe("codeMirrorOptions", () => {
     it("returns options", () => {
       const contentScript = ContentScript.create({
-        createCmExtension: () => Promise.resolve(mock<CmExtension>()),
+        createCm6Extension: () => Promise.resolve(mock<void>()),
+        createCm5Extension: () => Promise.resolve(mock<Cm5Extension>()),
         styles: [],
       })
 
@@ -82,7 +107,8 @@ describe("ContentScript", () => {
   describe("codeMirrorResources", () => {
     it("returns no resources", () => {
       const contentScript = ContentScript.create({
-        createCmExtension: () => Promise.resolve(mock<CmExtension>()),
+        createCm6Extension: () => Promise.resolve(mock<void>()),
+        createCm5Extension: () => Promise.resolve(mock<Cm5Extension>()),
         styles: [],
       })
 

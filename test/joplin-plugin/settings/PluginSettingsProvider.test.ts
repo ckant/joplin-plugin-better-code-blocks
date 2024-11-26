@@ -10,6 +10,7 @@ describe("PluginSettingsProvider", () => {
     it("provides settings", async () => {
       const fakeJoplinSettings = FakeJoplinSettings.create({
         values: {
+          completedLanguages: " c , c++, c-- ",
           completion: "enabled",
           copyFormat: "fencedCode",
           cornerStyle: "round",
@@ -25,6 +26,7 @@ describe("PluginSettingsProvider", () => {
           joplinSettings: fakeJoplinSettings,
         }).provide(),
       ).resolves.toStrictEqual({
+        completedLanguages: ["c", "c++", "c--"],
         completion: "enabled",
         copyFormat: "fencedCode",
         cornerStyle: "round",

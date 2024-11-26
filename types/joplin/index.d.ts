@@ -8,9 +8,55 @@ import {
   SettingItemType,
   SettingSection,
 } from "api/types"
+import { CompletionSource } from "@codemirror/autocomplete"
+import { Extension, Facet } from "@codemirror/state"
+import { EditorView } from "@codemirror/view"
 import CodeMirror from "codemirror"
 
 declare module "api/types" {
+  export type CodeMirror5 = typeof CodeMirror
+
+  /**
+   * CodeMirror 6 wrapper passed to CodeMirror ContentScript plugins.
+   *
+   * @see https://github.com/laurent22/joplin/blob/dev/packages/editor/CodeMirror/CodeMirrorControl.ts
+   */
+  export interface CodeMirror6 {
+    /**
+     * Some plugins want to enable autocompletion from *just* that plugin, without also
+     * enabling autocompletion for text within code blocks (and other built-in completion
+     * sources).
+     *
+     * To support this, this provides extensions that wrap the built-in autocomplete.
+     *
+     * @see https://discuss.codemirror.net/t/autocompletion-merging-override-in-config/7853
+     */
+    readonly joplinExtensions: {
+      /**
+       * Facet that enables autocomplete for some languages.
+       */
+      readonly enableLanguageDataAutocomplete: Facet<boolean, boolean[]>
+
+      /**
+       * Returns an {@link Extension} that adds the {@link completionSource} to
+       * the list of autocompletions.
+       */
+      completionSource(completionSource: CompletionSource): Extension
+    }
+
+    /**
+     * Returns the actual CodeMirror 6 {@link EditorView}.
+     *
+     * Also used to differentiate {@link CodeMirror5} from {@link CodeMirror6}.
+     */
+    get cm6(): EditorView
+
+    /**
+     * Adds the {@link extension}(s) to the {@link EditorView}.
+     */
+    addExtension(extension: Extension): void
+  }
+
   /**
    * Exported definition of a CodeMirror plugin.
    *
@@ -25,11 +71,13 @@ declare module "api/types" {
    */
   export interface CmContentScript {
     /**
-     * A plugin needs to either include a plugin here OR have enable an addon
+     * A plugin needs to either include a plugin here OR have enabled an addon
      */
-    plugin: (codeMirror: typeof CodeMirror) => void
+    plugin: (codeMirror: CodeMirror5 | CodeMirror6) => void
 
     /**
+     * Only for CodeMirror 5 plugins.
+     *
      * Some resources are included with codemirror and extend the functionality in standard ways
      * via plugins (called addons) which you can find here: https://codemirror.net/doc/manual.html#addons
      * and are available under the addon/ directory
@@ -40,6 +88,8 @@ declare module "api/types" {
     codeMirrorResources: string[]
 
     /**
+     * Only for CodeMirror 5 plugins.
+     *
      * Often addons for codemirror need to be enabled using an option,
      * There is also certain codemirror functionality that can be enabled/disabled using
      * simple options
@@ -141,41 +191,37 @@ declare module "api/types" {
             type: SettingItemType.Int
             value: SettingsType[SettingName]
             isEnum: true
-            options: {
-              [k in SettingsType[SettingName]]: string
-            }
+            options: Record<SettingsType[SettingName], string>
           }
       : SettingsType[SettingName] extends string
-      ? string extends SettingsType[SettingName]
-        ? ReducedSettingItem & {
-            type: SettingItemType.String
-            value: string
-            isEnum?: false | undefined
-            options?: undefined
-          }
-        : ReducedSettingItem & {
-            type: SettingItemType.String
-            value: SettingsType[SettingName]
-            isEnum: true
-            options: {
-              [k in SettingsType[SettingName]]: string
+        ? string extends SettingsType[SettingName]
+          ? ReducedSettingItem & {
+              type: SettingItemType.String
+              value: string
+              isEnum?: false | undefined
+              options?: undefined
             }
-          }
-      : SettingsType[SettingName] extends boolean
-      ? ReducedSettingItem & {
-          type: SettingItemType.Bool
-          value: boolean
-          isEnum?: false | undefined
-          options?: undefined
-        }
-      : [] extends SettingsType[SettingName]
-      ? ReducedSettingItem & {
-          type: SettingItemType.String
-          value: string
-          isEnum?: false | undefined
-          options?: undefined
-        }
-      : never
+          : ReducedSettingItem & {
+              type: SettingItemType.String
+              value: SettingsType[SettingName]
+              isEnum: true
+              options: Record<SettingsType[SettingName], string>
+            }
+        : SettingsType[SettingName] extends boolean
+          ? ReducedSettingItem & {
+              type: SettingItemType.Bool
+              value: boolean
+              isEnum?: false | undefined
+              options?: undefined
+            }
+          : [] extends SettingsType[SettingName]
+            ? ReducedSettingItem & {
+                type: SettingItemType.String
+                value: string
+                isEnum?: false | undefined
+                options?: undefined
+              }
+            : never
   }
 }
 
@@ -219,11 +265,11 @@ declare module "api/JoplinSettings" {
     [Setting in keyof SettingsType]: SettingsType[Setting]["isEnum"] extends true
       ? keyof SettingsType[Setting]["options"]
       : SettingsType[Setting]["type"] extends SettingItemType.Int
-      ? number
-      : SettingsType[Setting]["type"] extends SettingItemType.String
-      ? string
-      : SettingsType[Setting]["type"] extends SettingItemType.Bool
-      ? boolean
-      : never
+        ? number
+        : SettingsType[Setting]["type"] extends SettingItemType.String
+          ? string
+          : SettingsType[Setting]["type"] extends SettingItemType.Bool
+            ? boolean
+            : never
   }
 }

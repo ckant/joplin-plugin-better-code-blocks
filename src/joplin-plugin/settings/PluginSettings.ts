@@ -7,6 +7,7 @@
  * @see Config
  */
 export interface PluginSettings {
+  readonly completedLanguages: readonly string[]
   readonly completion: "enabled" | "disabled"
   readonly copyFormat: "code" | "fencedCode"
   readonly cornerStyle: "square" | "round"

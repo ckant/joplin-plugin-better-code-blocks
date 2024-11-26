@@ -16,18 +16,19 @@ import { CmContentScriptDefinition, PostMessageHandler } from "api/types"
 import { Retrier } from "@ext/stdlib/Retrier"
 
 import { JoplinPluginClient } from "@joplin-plugin-ipc/JoplinPluginClient"
+import { Settings } from "@joplin-plugin-ipc/model/types"
 
 import { ContentScript } from "@content-script/ContentScript"
 
-import { CmExtensions } from "@cm-extension/CmExtensions"
-import { Config } from "@cm-extension/model/Config"
+import { CmExtensions as Cm5Extensions } from "@cm-extension/cm5/CmExtensions"
+import { BetterCodeBlocks } from "@cm-extension/cm6/BetterCodeBlocks"
 
 /**
  * Calls the Joplin plugin with inter-process communication via {@link postMessage}.
  *
  * @see https://joplinapp.org/api/references/plugin_api/enums/contentscripttype.html#codemirrorplugin
  */
-async function getConfig(postMessage: PostMessageHandler): Promise<Config> {
+async function getSettings(postMessage: PostMessageHandler): Promise<Settings> {
   const retrier = Retrier.create({ window })
   const client = JoplinPluginClient.create({ call: postMessage, retrier })
   return await client.getSettings()
@@ -35,15 +36,22 @@ async function getConfig(postMessage: PostMessageHandler): Promise<Config> {
 
 const contentScriptDefinition: CmContentScriptDefinition = (contentScriptContext) => {
   return ContentScript.create({
-    createCmExtension: async (codeMirror, editor) => {
-      const config = await getConfig(contentScriptContext.postMessage)
-      return CmExtensions.createDefault({ codeMirror, editor, config })
+    createCm6Extension: async (codeMirror) => {
+      const config = await getSettings(contentScriptContext.postMessage)
+      codeMirror.addExtension([
+        BetterCodeBlocks.extension(config),
+        codeMirror.joplinExtensions.completionSource(BetterCodeBlocks.completionSource(config)),
+      ])
+    },
+    createCm5Extension: async (codeMirror, editor) => {
+      const config = await getSettings(contentScriptContext.postMessage)
+      return Cm5Extensions.createDefault({ codeMirror, editor, config })
     },
     // Assets must be within the (current) file's directory or a subdirectory for Joplin to load them
     styles: [
-      "./cm-extension/assets/cm-extension.css",
-      "./cm-extension/assets/opt/render-layout/minimal.css",
-      "./cm-extension/assets/opt/render-layout/standard.css",
+      "./cm-extension/cm5/assets/cm-extension.css",
+      "./cm-extension/cm5/assets/opt/render-layout/minimal.css",
+      "./cm-extension/cm5/assets/opt/render-layout/standard.css",
     ],
   })
 }

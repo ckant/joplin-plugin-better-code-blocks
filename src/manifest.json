@@ -10,5 +10,11 @@
 	"repository_url": "https://github.com/ckant/joplin-plugin-better-code-blocks",
 	"keywords": ["autocomplete", "code", "coding", "developer", "programming", "render", "rendering"],
 	"categories": ["developer tools", "editor", "productivity"],
-	"screenshots": []
+	"screenshots": [],
+	"icons": {
+		"16": "media/logo16.png",
+		"32": "media/logo32.png",
+		"48": "media/logo48.png",
+		"128": "media/logo128.png"
+	}
 }

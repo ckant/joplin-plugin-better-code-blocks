@@ -28,14 +28,16 @@
   <a href="#license">License</a>
 </p>
 
-<div align="center"><img src="https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/preview.gif" alt="preview" width="87%"></div>
+<div align="center"><img src="https://raw.githubusercontent.com/ckant/joplin-plugin-better-code-blocks/main/media/preview.gif" alt="preview" width="88%"></div>
 
 ## Features
 
-- Renders code blocks inline with `Minimal` or `Standard` styles
-- Adds `copy` button for inline code blocks
-- Autocompletes code blocks on <kbd>Enter</kbd>
+- Renders code blocks inside the editor pane (rather than only inside the preview pane)
+- Adds `copy` button for code blocks inside the editor pane
+- Autocompletes code blocks
 - Changes <kbd>Select All</kbd> to select the current code block
+- Performs some tricks to prevent accidental deletion of code blocks
+- Supports both legacy (CM5) and new (CM6) markdown editor
 
 ## Screenshots
 
@@ -50,14 +52,15 @@ Search for `Better Code Blocks` in the Joplin settings under the `Plugins` secti
 ## Settings
 
 | Setting                                             | Options                                          | Description                                                                           |
-| --------------------------------------------------- |--------------------------------------------------| ------------------------------------------------------------------------------------- |
+|-----------------------------------------------------|--------------------------------------------------|---------------------------------------------------------------------------------------|
 | Autocompletion                                      | `Enabled`, `Disabled`                            | Enables/disables automatic completion of code blocks when <kbd>Enter</kbd> is pressed |
 | Rendering                                           | `Enabled`, `Disabled`                            | Enables/disables rendering of code blocks                                             |
 | Behavior of <kbd>Select All</kbd> inside code block | `Select current code block`, `Select everything` | Changes the behavior of <kbd>Select All</kbd> while the cursor is inside code blocks  |
 | Render layout                                       | `Minimal`, `Standard`                            | Changes the layout of rendered code blocks                                            |
 | Corner style                                        | `Square`, `Round`                                | Changes the border style of rendered code blocks                                      |
-| Excluded languages                                  | `(comma-separated list)`                         | Disables rendering of code blocks for specific languages                              |
 | Copy button behavior                                | `Copy code`, `Copy code and fences`              | Controls what's copied when the <kbd>Copy Code</kbd> button is clicked                |
+| Autocompleted languages (new CM6 editor only)       | `(comma-separated list)`                         | Enables native autocompletion for the given languages                                 |
+| Excluded languages                                  | `(comma-separated list)`                         | Disables rendering of code blocks for specific languages                              |
 
 ## Credits
 
