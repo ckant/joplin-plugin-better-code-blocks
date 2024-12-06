@@ -11,6 +11,9 @@
   <a href="https://discourse.joplinapp.org/t/plugin-better-code-blocks/32613">
     <img alt="Joplin Plugin" src="https://img.shields.io/npm/v/joplin-plugin-better-code-blocks?logo=joplin&label=plugin&color=1071D3&style=flat-square" />
   </a>
+  <a href="https://discourse.joplinapp.org/t/plugin-better-code-blocks/32613">
+    <img alt="Downloads" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fckant%2Fjoplin-plugin-stats%2Frefs%2Fheads%2Fmain%2Fdownloads.json&query=%24%5Bcom.ckant.joplin-plugin-better-code-blocks%5D&style=flat-square&label=downloads&color=0D98ba" />
+  </a>
   <a href="https://github.com/ckant/joplin-plugin-better-code-blocks/blob/main/LICENSE">
     <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-549E6A?style=flat-square" />
   </a>
