@@ -21,7 +21,6 @@ import { Settings } from "@joplin-plugin-ipc/model/types"
 import { ContentScript } from "@content-script/ContentScript"
 
 import { CmExtensions as Cm5Extensions } from "@cm-extension/cm5/CmExtensions"
-import { BetterCodeBlocks } from "@cm-extension/cm6/BetterCodeBlocks"
 
 /**
  * Calls the Joplin plugin with inter-process communication via {@link postMessage}.
@@ -38,6 +37,7 @@ const contentScriptDefinition: CmContentScriptDefinition = (contentScriptContext
   return ContentScript.create({
     createCm6Extension: async (codeMirror) => {
       const config = await getSettings(contentScriptContext.postMessage)
+      const { BetterCodeBlocks } = await import("@cm-extension/cm6/BetterCodeBlocks")
       codeMirror.addExtension([
         BetterCodeBlocks.extension(config),
         codeMirror.joplinExtensions.completionSource(BetterCodeBlocks.completionSource(config)),
