@@ -1,5 +1,5 @@
 import { CompletionSource as CmCompletionSource } from "@codemirror/autocomplete"
-import { Extension } from "@codemirror/state"
+import { Extension, Prec } from "@codemirror/state"
 import { ConditionalPick } from "type-fest"
 
 import { CompletionSource } from "@cm-extension/cm6/completion/CompletionSource"
@@ -47,7 +47,7 @@ export namespace BetterCodeBlocks {
 
       // View Plugins
       when(config, "rendering", {
-        enabled: Extensions.viewPlugin,
+        enabled: Prec.high(Extensions.viewPlugin),
         disabled: NoExtension,
       }),
 
