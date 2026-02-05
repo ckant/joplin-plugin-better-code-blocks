@@ -3,6 +3,16 @@ import { describe, expect, it } from "vitest"
 import { Nodes } from "@ext/lezer/markdown/Nodes"
 
 describe("Nodes", () => {
+  describe("isDocument", () => {
+    it("returns true when document", () => {
+      expect(Nodes.isDocument({ name: "Document", from: 0, to: 3 })).toBeTrue()
+    })
+
+    it("returns false when not document", () => {
+      expect(Nodes.isDocument({ name: "NotDocument", from: 0, to: 3 })).toBeFalse()
+    })
+  })
+
   describe("isFencedCode", () => {
     it("returns true when fenced code", () => {
       expect(Nodes.isFencedCode({ name: "FencedCode", from: 0, to: 3 })).toBeTrue()

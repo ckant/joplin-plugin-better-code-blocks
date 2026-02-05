@@ -5,6 +5,15 @@ import { NodeDescription } from "@lezer/common"
  */
 export namespace Nodes {
   /**
+   * Returns true if the {@link node} represents `Document`.
+   *
+   * This is the parent node of markdown trees.
+   */
+  export function isDocument(node: NodeDescription): boolean {
+    return node.name === "Document"
+  }
+
+  /**
    * Returns true if the {@link node} represents `FencedCode`.
    *
    * This is the parent node of a fenced code block.

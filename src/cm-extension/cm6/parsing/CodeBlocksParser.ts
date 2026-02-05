@@ -65,7 +65,7 @@ export namespace CodeBlocksParser {
    *
    * The structure of the markdown syntax tree is as follows:
    *
-   * - `Document` :: root
+   * - `Document` :: root which is possibly nested inside another language's `Document` node
    *   - `(other nodes)`
    *   -  `FencedCode` :: (always-present) code fence wrapper
    *       - `CodeMark`    :: (always present)  opening code fence characters (e.g. `~~~`)
@@ -84,7 +84,7 @@ export namespace CodeBlocksParser {
     const codeBlocks: CodeBlock[] = []
 
     // Iterate over all immediate children of the `Document` root node
-    for (let hasNext = cursor.next(true); hasNext; hasNext = cursor.next(false)) {
+    for (let hasNext = cursor.next(true); hasNext; hasNext = cursor.next(Nodes.isDocument(cursor))) {
       if (!Nodes.isFencedCode(cursor)) continue
 
       // Enter the `FencedCode` node
