@@ -1,6 +1,10 @@
 {
   "name": "joplin-plugin-better-code-blocks",
   "version": "2.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckant/joplin-plugin-better-code-blocks.git"
+  },
   "scripts": {
     "coverage": "vitest --coverage",
     "dist": "webpack --env joplin-plugin-config=buildMain && webpack --env joplin-plugin-config=buildExtraScripts && webpack --env joplin-plugin-config=createArchive",
